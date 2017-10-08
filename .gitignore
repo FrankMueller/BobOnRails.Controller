@@ -1,0 +1,7 @@
+.vs
+Source/BobOnRails.Controller/bin/
+Source/BobOnRails.Controller/obj/
+Source/BobOnRails.Controller.Physics.Core/bin/
+Source/BobOnRails.Controller.Physics.Core/obj/
+Source/BobOnRails.Controller.Physics.UnitTests/bin/
+Source/BobOnRails.Controller.Physics.UnitTests/obj/
