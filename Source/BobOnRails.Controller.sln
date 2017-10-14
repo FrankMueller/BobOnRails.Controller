@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BobOnRails.Controller", "Bo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BobOnRails.Controller.GUI", "BobOnRails.Controller.GUI\BobOnRails.Controller.GUI.csproj", "{D575067B-4152-4B1A-BBDA-30AF92764A9C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BobOnRails.Controller.Communication", "BobOnRails.Controller.Communication\BobOnRails.Controller.Communication.csproj", "{5511AB2A-FFB9-4D01-A28C-447F45C86E9D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BobOnRails.Controller.Communication.UnitTests", "BobOnRails.Controller.Communication.UnitTests\BobOnRails.Controller.Communication.UnitTests.csproj", "{6CC0C660-E813-40ED-BB21-A9226FA64090}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{D575067B-4152-4B1A-BBDA-30AF92764A9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D575067B-4152-4B1A-BBDA-30AF92764A9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D575067B-4152-4B1A-BBDA-30AF92764A9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5511AB2A-FFB9-4D01-A28C-447F45C86E9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5511AB2A-FFB9-4D01-A28C-447F45C86E9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5511AB2A-FFB9-4D01-A28C-447F45C86E9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5511AB2A-FFB9-4D01-A28C-447F45C86E9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CC0C660-E813-40ED-BB21-A9226FA64090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CC0C660-E813-40ED-BB21-A9226FA64090}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CC0C660-E813-40ED-BB21-A9226FA64090}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CC0C660-E813-40ED-BB21-A9226FA64090}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

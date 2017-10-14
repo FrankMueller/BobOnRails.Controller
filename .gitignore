@@ -3,6 +3,10 @@ Source/BobOnRails.Controller/bin/
 Source/BobOnRails.Controller/obj/
 Source/BobOnRails.Controller.GUI/bin/
 Source/BobOnRails.Controller.GUI/obj/
+Source/BobOnRails.Controller.Communication/bin/
+Source/BobOnRails.Controller.Communication/obj/
+Source/BobOnRails.Controller.Communication.UnitTests/bin/
+Source/BobOnRails.Controller.Communication.UnitTests/obj/
 Source/BobOnRails.Controller.Physics.Core/bin/
 Source/BobOnRails.Controller.Physics.Core/obj/
 Source/BobOnRails.Controller.Physics.UnitTests/bin/
