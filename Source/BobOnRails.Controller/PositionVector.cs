@@ -30,21 +30,55 @@
             : base(x, y, z)
         { }
 
+        /// <summary>
+        /// Adds a <see cref="PositionVector"/> to a <see cref="PositionVector"/>.
+        /// </summary>
+        /// <param name="a">The first summand.</param>
+        /// <param name="b">The second summand.</param>
+        /// <returns>
+        /// A <see cref="PositionVector"/> that is the sum of <paramref name="a"/>
+        /// and <paramref name="b"/>.
+        /// </returns>
         public static PositionVector operator +(PositionVector a, PositionVector b)
         {
             return new PositionVector(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
         }
 
+        /// <summary>
+        /// Subtracts a <see cref="PositionVector"/> from a <see cref="PositionVector"/>.
+        /// </summary>
+        /// <param name="a">The minuend.</param>
+        /// <param name="b">The subtrahend.</param>
+        /// <returns>
+        /// A <see cref="PositionVector"/> that is the difference of <paramref name="a"/>
+        /// and <paramref name="b"/>.
+        /// </returns>
         public static PositionVector operator -(PositionVector a, PositionVector b)
         {
             return new PositionVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
         }
 
+        /// <summary>
+        /// Scales the specified <see cref="PositionVector"/> by the specified factor.
+        /// </summary>
+        /// <param name="position">The vector to scale.</param>
+        /// <param name="scale">The scale factor.</param>
+        /// <returns>
+        /// A <see cref="PositionVector"/> that is the scaled vector of <paramref name="position"/>.
+        /// </returns>
         public static PositionVector operator *(PositionVector position, double scale)
         {
             return new PositionVector(position.X * scale, position.Y * scale, position.Z * scale);
         }
 
+        /// <summary>
+        /// Scales the specified <see cref="PositionVector"/> by the specified factor.
+        /// </summary>
+        /// <param name="scale">The scale factor.</param>
+        /// <param name="position">The vector to scale.</param>
+        /// <returns>
+        /// A <see cref="PositionVector"/> that is the scaled vector of <paramref name="position"/>.
+        /// </returns>
         public static PositionVector operator *(double scale, PositionVector position)
         {
             return new PositionVector(position.X * scale, position.Y * scale, position.Z * scale);

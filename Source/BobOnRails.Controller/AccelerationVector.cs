@@ -30,24 +30,58 @@
             : base(x, y, z)
         { }
 
+        /// <summary>
+        /// Adds a <see cref="AccelerationVector"/> to a <see cref="AccelerationVector"/>.
+        /// </summary>
+        /// <param name="a">The first summand.</param>
+        /// <param name="b">The second summand.</param>
+        /// <returns>
+        /// A <see cref="AccelerationVector"/> that is the sum of <paramref name="a"/>
+        /// and <paramref name="b"/>.
+        /// </returns>
         public static AccelerationVector operator +(AccelerationVector a, AccelerationVector b)
         {
             return new AccelerationVector(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
         }
 
+        /// <summary>
+        /// Subtracts a <see cref="AccelerationVector"/> from a <see cref="AccelerationVector"/>.
+        /// </summary>
+        /// <param name="a">The minuend.</param>
+        /// <param name="b">The subtrahend.</param>
+        /// <returns>
+        /// A <see cref="AccelerationVector"/> that is the difference of <paramref name="a"/>
+        /// and <paramref name="b"/>.
+        /// </returns>
         public static AccelerationVector operator -(AccelerationVector a, AccelerationVector b)
         {
             return new AccelerationVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
         }
 
-        public static AccelerationVector operator *(AccelerationVector position, double scale)
+        /// <summary>
+        /// Scales the specified <see cref="AccelerationVector"/> by the specified factor.
+        /// </summary>
+        /// <param name="vector">The vector to scale.</param>
+        /// <param name="scale">The scale factor.</param>
+        /// <returns>
+        /// A <see cref="AccelerationVector"/> that is the scaled vector of <paramref name="vector"/>.
+        /// </returns>
+        public static AccelerationVector operator *(AccelerationVector vector, double scale)
         {
-            return new AccelerationVector(position.X * scale, position.Y * scale, position.Z * scale);
+            return new AccelerationVector(vector.X * scale, vector.Y * scale, vector.Z * scale);
         }
 
-        public static AccelerationVector operator *(double scale, AccelerationVector position)
+        /// <summary>
+        /// Scales the specified <see cref="AccelerationVector"/> by the specified factor.
+        /// </summary>
+        /// <param name="scale">The scale factor.</param>
+        /// <param name="vector">The vector to scale.</param>
+        /// <returns>
+        /// A <see cref="AccelerationVector"/> that is the scaled vector of <paramref name="vector"/>.
+        /// </returns>
+        public static AccelerationVector operator *(double scale, AccelerationVector vector)
         {
-            return new AccelerationVector(position.X * scale, position.Y * scale, position.Z * scale);
+            return new AccelerationVector(vector.X * scale, vector.Y * scale, vector.Z * scale);
         }
     }
 }

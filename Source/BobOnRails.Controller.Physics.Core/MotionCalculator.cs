@@ -2,6 +2,10 @@
 
 namespace BobOnRails.Controller.Physics.Core
 {
+    /// <summary>
+    /// A static class providing methods compute velocity and position changes from 
+    /// accelerations and time spans.
+    /// </summary>
     public static class MotionCalculator
     {
         /// <summary>
@@ -11,9 +15,9 @@ namespace BobOnRails.Controller.Physics.Core
         /// <param name="velocity">The velocity (v) [m/s].</param>
         /// <param name="timeStep">The time span (dt).</param>
         /// <returns>The change in position dp = (v*dt) [m].</returns>
-        public static PositionVector GetPositionChange(VelocityVector veloctiy, TimeSpan timeStep)
+        public static PositionVector GetPositionChange(VelocityVector velocity, TimeSpan timeStep)
         {
-            return GetPositionChange(veloctiy, timeStep.TotalSeconds);
+            return GetPositionChange(velocity, timeStep.TotalSeconds);
         }
 
         /// <summary>
@@ -23,11 +27,11 @@ namespace BobOnRails.Controller.Physics.Core
         /// <param name="velocity">The velocity (v) [m/s].</param>
         /// <param name="timeStep">The time span (dt) [s].</param>
         /// <returns>The change in position dp = (v*dt) [m].</returns>
-        public static PositionVector GetPositionChange(VelocityVector veloctiy, double timeStep)
+        public static PositionVector GetPositionChange(VelocityVector velocity, double timeStep)
         {
-            return new PositionVector(GetPositionChange(veloctiy.X, timeStep),
-                                GetPositionChange(veloctiy.Y, timeStep),
-                                GetPositionChange(veloctiy.Z, timeStep));
+            return new PositionVector(GetPositionChange(velocity.X, timeStep),
+                                      GetPositionChange(velocity.Y, timeStep),
+                                      GetPositionChange(velocity.Z, timeStep));
         }
 
         /// <summary>

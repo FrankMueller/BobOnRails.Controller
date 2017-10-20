@@ -3,7 +3,7 @@
 namespace BobOnRails.Controller
 {
     /// <summary>
-    /// Represents a position on the path of Bob.
+    /// Represents a position on the path of motion.
     /// </summary>
     public class PathPosition
     {
@@ -25,6 +25,12 @@ namespace BobOnRails.Controller
             Position = position;
             Velocity = velocity;
             Acceleration = acceleration;
+        }
+
+        /// <inheritdoc/>
+        public override string ToString()
+        {
+            return $"R={Position.Length} v={Velocity.Length} a={Acceleration.Length}";
         }
     }
 }

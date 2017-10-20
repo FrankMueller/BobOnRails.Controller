@@ -30,24 +30,58 @@
             : base(x, y, z)
         { }
 
+        /// <summary>
+        /// Adds a <see cref="VelocityVector"/> to a <see cref="VelocityVector"/>.
+        /// </summary>
+        /// <param name="a">The first summand.</param>
+        /// <param name="b">The second summand.</param>
+        /// <returns>
+        /// A <see cref="VelocityVector"/> that is the sum of <paramref name="a"/>
+        /// and <paramref name="b"/>.
+        /// </returns>
         public static VelocityVector operator +(VelocityVector a, VelocityVector b)
         {
             return new VelocityVector(a.X + b.X, a.Y + b.Y, a.Z + b.Z);
         }
 
+        /// <summary>
+        /// Subtracts a <see cref="VelocityVector"/> from a <see cref="VelocityVector"/>.
+        /// </summary>
+        /// <param name="a">The minuend.</param>
+        /// <param name="b">The subtrahend.</param>
+        /// <returns>
+        /// A <see cref="VelocityVector"/> that is the difference of <paramref name="a"/>
+        /// and <paramref name="b"/>.
+        /// </returns>
         public static VelocityVector operator -(VelocityVector a, VelocityVector b)
         {
             return new VelocityVector(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
         }
 
-        public static VelocityVector operator *(VelocityVector position, double scale)
+        /// <summary>
+        /// Scales the specified <see cref="VelocityVector"/> by the specified factor.
+        /// </summary>
+        /// <param name="vector">The vector to scale.</param>
+        /// <param name="scale">The scale factor.</param>
+        /// <returns>
+        /// A <see cref="VelocityVector"/> that is the scaled vector of <paramref name="vector"/>.
+        /// </returns>
+        public static VelocityVector operator *(VelocityVector vector, double scale)
         {
-            return new VelocityVector(position.X * scale, position.Y * scale, position.Z * scale);
+            return new VelocityVector(vector.X * scale, vector.Y * scale, vector.Z * scale);
         }
 
-        public static VelocityVector operator *(double scale, VelocityVector position)
+        /// <summary>
+        /// Scales the specified <see cref="VelocityVector"/> by the specified factor.
+        /// </summary>
+        /// <param name="scale">The scale factor.</param>
+        /// <param name="vector">The vector to scale.</param>
+        /// <returns>
+        /// A <see cref="VelocityVector"/> that is the scaled vector of <paramref name="vector"/>.
+        /// </returns>
+        public static VelocityVector operator *(double scale, VelocityVector vector)
         {
-            return new VelocityVector(position.X * scale, position.Y * scale, position.Z * scale);
+            return new VelocityVector(vector.X * scale, vector.Y * scale, vector.Z * scale);
         }
     }
 }
