@@ -20,7 +20,7 @@
         /// </summary>
         /// <param name="type">The type of the request.</param>
         /// <param name="body">The body of the request.</param>
-        public Request(RequestTypes type, byte[] body)
+        public Request(RequestTypes type, byte[] body = null)
         {
             Type = type;
 

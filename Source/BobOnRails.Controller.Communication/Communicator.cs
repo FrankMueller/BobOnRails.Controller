@@ -6,15 +6,18 @@ using System.Threading;
 
 namespace BobOnRails.Controller.Communication
 {
-    public class Communicator
+    /// <summary>
+    /// A class providing the basic functionality for asyncronious communication
+    /// to the measurement device using the TCP protocol.
+    /// </summary>
+    public class Communicator : IDisposable
     {
-        private static int responseHeaderSize = Marshal.SizeOf(typeof(byte)) + Marshal.SizeOf(typeof(int));
+        private static int messageHeaderSize = Marshal.SizeOf(typeof(byte)) + Marshal.SizeOf(typeof(int));
 
         private byte[] receiveBuffer;
         private int receiveChunkSize;
         private int incomingResponseBodySize;
         private Response incomingResponse;
-        private SynchronizationContext syncronizationContext;
 
         /// <summary>
         /// Gets the underlying <see cref="TcpClient"/>.
@@ -22,7 +25,7 @@ namespace BobOnRails.Controller.Communication
         public TcpClient TcpClient { get; private set; }
 
         /// <summary>
-        /// Occurs if data was received.
+        /// Occurs when data was received (this might occur on a different thread).
         /// </summary>
         public event EventHandler<ResponseReceivedEventArgs> DataReceived;
 
@@ -32,10 +35,7 @@ namespace BobOnRails.Controller.Communication
         /// <param name="e">The <see cref="EventArgs"/> to send.</param>
         protected virtual void OnDataReceived(ResponseReceivedEventArgs e)
         {
-            if (syncronizationContext != null)
-                syncronizationContext.Post(delegate { DataReceived?.Invoke(this, e); }, null);
-            else
-                DataReceived?.Invoke(this, e);
+            DataReceived?.Invoke(this, e);
         }
 
         /// <summary>
@@ -49,20 +49,44 @@ namespace BobOnRails.Controller.Communication
 
             this.receiveBuffer = new byte[0];
             this.receiveChunkSize = receiveChunkSize;
-            syncronizationContext = SynchronizationContext.Current;
 
             StartReceive();
+        }
+
+        /// <inheritdoc cref="IDisposable.Dispose()" />
+        public void Dispose()
+        {
+            TcpClient.Close();
+        }
+
+        /// <summary>
+        /// Disconnects from the device.
+        /// </summary>
+        public void Disconnect()
+        {
+            SendRequest(new Request(RequestTypes.Disconnect));
+        }
+
+        /// <summary>
+        /// Sends the specified data syncroniously.
+        /// </summary>
+        /// <param name="request">The request to send.</param>
+        public void SendRequest(Request request)
+        {
+            var headerBytes = GetHeaderBytes(request);
+            TcpClient.Client.Send(headerBytes.ToArray(), headerBytes.Count, SocketFlags.None);
+
+            if (request.Body.Length > 0)
+                TcpClient.Client.Send(request.Body, request.Body.Length, SocketFlags.None);
         }
 
         /// <summary>
         /// Sends the specified data asyncroniously.
         /// </summary>
-        /// <param name="bytes">The data to send.</param>
+        /// <param name="request">The request to send.</param>
         public void SendRequestAsync(Request request)
         {
-            var headerBytes = new List<byte>();
-            headerBytes.Add((byte)request.Type);
-            headerBytes.AddRange(BitConverter.GetBytes(request.Body.Length));
+            var headerBytes = GetHeaderBytes(request);
             TcpClient.Client.BeginSend(headerBytes.ToArray(), 0, headerBytes.Count, SocketFlags.None, EndSend, null);
 
             if (request.Body.Length > 0)
@@ -115,14 +139,14 @@ namespace BobOnRails.Controller.Communication
                         break;
                     }
                 }
-                else if (receiveBuffer.Length >= responseHeaderSize)
+                else if (receiveBuffer.Length >= messageHeaderSize)
                 {
                     incomingResponse = new Response((ResponseTypes)receiveBuffer[0]);
                     incomingResponseBodySize = BitConverter.ToInt32(receiveBuffer, 1);
 
-                    var remainingByteCount = receiveBuffer.Length - responseHeaderSize;
+                    var remainingByteCount = receiveBuffer.Length - messageHeaderSize;
                     var remainingByteBuffer = new byte[remainingByteCount];
-                    Array.Copy(receiveBuffer, responseHeaderSize, remainingByteBuffer, 0, remainingByteCount);
+                    Array.Copy(receiveBuffer, messageHeaderSize, remainingByteBuffer, 0, remainingByteCount);
                     receiveBuffer = remainingByteBuffer;
                     break;
                 }
@@ -131,6 +155,15 @@ namespace BobOnRails.Controller.Communication
             while (true);
 
             StartReceive();
+        }
+
+        private static List<byte> GetHeaderBytes(Request request)
+        {
+            var headerBytes = new List<byte>(messageHeaderSize);
+            headerBytes.Add((byte)request.Type);
+            headerBytes.AddRange(BitConverter.GetBytes(request.Body.Length));
+
+            return headerBytes;
         }
     }
 }

@@ -19,7 +19,6 @@
         /// Initializes a new instance of the <see cref="Response"/> class.
         /// </summary>
         /// <param name="type">The type of the response.</param>
-        /// <param name="body">The body of the response.</param>
         public Response(ResponseTypes type)
         {
             Type = type;
