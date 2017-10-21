@@ -32,6 +32,10 @@ namespace BobOnRails.Controller.Physics.Core
             : this(new PathPosition())
         { }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MotionTracker"/> class.
+        /// </summary>
+        /// <param name="initialPosition">The initial position state of the device.</param>
         public MotionTracker(PathPosition initialPosition)
         {
             path = new Path();
@@ -40,11 +44,6 @@ namespace BobOnRails.Controller.Physics.Core
             Path = path.AsReadOnly();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="acceleration"></param>
-        /// <param name="timeStep"></param>
         public void AppendMotion(AccelerationVector acceleration, TimeSpan timeStep)
         {
             var currentPosition = CurrentPosition;
