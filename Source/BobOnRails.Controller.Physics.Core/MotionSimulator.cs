@@ -29,6 +29,7 @@ namespace BobOnRails.Controller.Physics.Core
             var timeForOneRotation = 2.0 * Math.PI * circleRadius / speed;
             var timeStepsForOneRotation = timeForOneRotation * sampleFrequency;
 
+            var startTime = DateTime.Now;
             var timeStep = 1.0 / sampleFrequency;
             var angleStep = 2.0 * Math.PI / timeStepsForOneRotation;
             var angleSpeed = 2.0 * Math.PI / timeForOneRotation;
@@ -37,11 +38,12 @@ namespace BobOnRails.Controller.Physics.Core
             for (int i = 0; i < timeStepsForOneRotation * rotations; i++)
             {
                 var angle = angleStep * i;
-                path.Add(new PathPosition(
-                    TimeSpan.FromSeconds(timeStep * i),
+                path.Add(new PathPoint(
+                    startTime + TimeSpan.FromSeconds(timeStep * i),
                     GetPositionOnCircle(circleRadius, angle),
                     GetVelocityOnCircle(circleRadius, angle, angleSpeed),
-                    GetAccelerationOnCircle(circleRadius, angle, angleSpeed)));
+                    GetAccelerationOnCircle(circleRadius, angle, angleSpeed),
+                    new JerkVector(0.0, 0.0, 0.0)));
             }
 
             return path;
@@ -69,6 +71,7 @@ namespace BobOnRails.Controller.Physics.Core
         public static Path GenerateSinusSpeedCirclePath(double circleRadius, double topSpeed,
             double sampleFrequency, double periodTime, double rotations = 1.0)
         {
+            var startTime = DateTime.Now;
             var timeStep = 1.0 / sampleFrequency;
 
             var time = 0.0;
@@ -85,11 +88,12 @@ namespace BobOnRails.Controller.Physics.Core
 
                 angle += angleIncrement;
 
-                path.Add(new PathPosition(
-                    TimeSpan.FromSeconds(time),
+                path.Add(new PathPoint(
+                    startTime + TimeSpan.FromSeconds(time),
                     GetPositionOnCircle(circleRadius, angle),
                     GetVelocityOnCircle(circleRadius, angle, angleSpeed),
-                    GetAccelerationOnCircle(circleRadius, angle, angleSpeed)));
+                    GetAccelerationOnCircle(circleRadius, angle, angleSpeed), 
+                    new JerkVector(0.0, 0.0, 0.0)));
 
                 time += timeStep;
             }
@@ -119,6 +123,7 @@ namespace BobOnRails.Controller.Physics.Core
         public static Path GenerateSinusSpeedLinearPath(double topSpeed, double sampleFrequency,
             double periodTime, double periodCount = 1.0)
         {
+            var startTime = DateTime.Now;
             var timeStep = 1.0 / sampleFrequency;
 
             var time = 0.0;
@@ -132,11 +137,12 @@ namespace BobOnRails.Controller.Physics.Core
                 var speed = speedFactor * Math.Sin(periodFactor * time) + 1.0;
                 var acceleration = speedFactor * Math.Cos(periodFactor * time) * periodFactor;
 
-                path.Add(new PathPosition(
-                    TimeSpan.FromSeconds(time),
+                path.Add(new PathPoint(
+                    startTime + TimeSpan.FromSeconds(time),
                     new PositionVector(length, 0, 0),
                     new VelocityVector(speed, 0, 0),
-                    new AccelerationVector(acceleration, 0, 0)));
+                    new AccelerationVector(acceleration, 0, 0),
+                    new JerkVector(0.0, 0.0, 0.0)));
 
                 time += timeStep;
             }

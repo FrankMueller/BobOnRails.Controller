@@ -2,7 +2,9 @@
 
 namespace BobOnRails.Controller
 {
-    public class Path : List<PathPosition>
-    {
-    }
+    /// <summary>
+    /// A class representing the path of motion. 
+    /// </summary>
+    public class Path : List<PathPoint>
+    { }
 }

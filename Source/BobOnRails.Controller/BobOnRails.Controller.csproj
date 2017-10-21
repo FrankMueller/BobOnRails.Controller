@@ -34,6 +34,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JerkVector.cs" />
     <Compile Include="AccelerationVector.cs" />
     <Compile Include="ThreeDimensionalVector.cs" />
     <Compile Include="PositionVector.cs" />

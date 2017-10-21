@@ -26,7 +26,7 @@
         /// <param name="x">The velocity along the x-coordinate [m/s].</param>
         /// <param name="y">The velocity along the y-coordinate [m/s].</param>
         /// <param name="z">The velocity along the z-coordinate [m/s].</param>
-        public VelocityVector(double x, double y, double z) 
+        public VelocityVector(double x = 0.0, double y = 0.0, double z = 0.0) 
             : base(x, y, z)
         { }
 

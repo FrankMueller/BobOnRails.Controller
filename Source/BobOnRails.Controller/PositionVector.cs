@@ -26,7 +26,7 @@
         /// <param name="x">The x-coordinate of the position [m].</param>
         /// <param name="y">The y-coordinate of the position [m].</param>
         /// <param name="z">The z-coordinate of the position [m].</param>
-        public PositionVector(double x, double y, double z) 
+        public PositionVector(double x = 0.0, double y = 0.0, double z = 0.0)
             : base(x, y, z)
         { }
 

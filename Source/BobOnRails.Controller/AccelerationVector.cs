@@ -26,7 +26,7 @@
         /// <param name="x">The acceleration along the x-coordinate [m/s^2].</param>
         /// <param name="y">The acceleration along the y-coordinate [m/s^2].</param>
         /// <param name="z">The acceleration along the z-coordinate [m/s^2].</param>
-        public AccelerationVector(double x, double y, double z)
+        public AccelerationVector(double x = 0.0, double y = 0.0, double z = 0.0)
             : base(x, y, z)
         { }
 

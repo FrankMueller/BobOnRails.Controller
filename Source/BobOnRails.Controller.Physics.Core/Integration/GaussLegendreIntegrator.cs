@@ -30,7 +30,7 @@ namespace BobOnRails.Controller.Physics.Core.Integration
         /// <param name="from">The begin of the domain to integrate.</param>
         /// <param name="to">The end of the domain to integrate.</param>
         /// <returns>The integral value.</returns>
-        public double Integrate(Func<double, double> function, double from, double to)
+        public double Integrate(Func<double, double> function, double from = 0.0, double to = 1.0)
         {
             var slope = 0.5 * (to - from);
             var offset = 0.5 * (from + to);

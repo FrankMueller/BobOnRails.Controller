@@ -7,14 +7,13 @@ namespace BobOnRails.Controller.Physics.UnitTests
     [TestFixture]
     public class MotionTrackerTests
     {
-        [TestCase(0.353, 50, 200, 1)]
-        [TestCase(1, 50, 1000, 2)]
-        [TestCase(1, 50, 100, 2)]
-        public void TracksCirclePathProperly(double circleRadius, double timeForOneRotation,
-            int timeStepsForOneRotation, int rotations)
+        [TestCase(2.0 / (2.0 * Math.PI), 1.0 * 1000 / 3600, 50, 1)]
+        [TestCase(2.0 / (2.0 * Math.PI), 1.0 * 1000 / 3600, 20, 1)]
+        [TestCase(1.000, 2.0 * 1000 / 3600, 50, 2)]
+        [TestCase(1.000, 2.0 * 1000 / 3600, 10, 2)]
+        public void TracksCirclePathProperly(double circleRadius, double speed,
+            double sampleFrequency, int rotations)
         {
-            var speed = Math.PI * circleRadius / timeForOneRotation;
-            var sampleFrequency = timeStepsForOneRotation / timeForOneRotation;
             var path = MotionSimulator.GenerateConstantSpeedCirclePath(circleRadius, speed, sampleFrequency, rotations);
 
             //Initialize the motion tracker
@@ -26,13 +25,13 @@ namespace BobOnRails.Controller.Physics.UnitTests
             {
                 var pathPoint = path[i];
                 var previousPathPoint = path[i - 1];
-                tracker.AppendMotion(pathPoint.Acceleration, pathPoint.Time - previousPathPoint.Time);
+                tracker.AppendMotion(pathPoint.Acceleration, pathPoint.Time);
 
                 var trackedPoint = tracker.CurrentPosition.Position;
                 var deviation = Math.Abs((pathPoint.Position - trackedPoint).Length);
                 maxDeviation = Math.Max(maxDeviation, deviation);
 
-                Assert.LessOrEqual(deviation, circleRadius * 0.01, $"Motion tracker lost position at step {i}/{timeStepsForOneRotation}");
+                Assert.LessOrEqual(deviation, circleRadius * 0.01, $"Motion tracker lost position at step {i}/{path.Count}");
             }
 
             TestContext.WriteLine($"Max. deviation was: {maxDeviation}");
@@ -54,7 +53,7 @@ namespace BobOnRails.Controller.Physics.UnitTests
             {
                 var pathPoint = path[i];
                 var previousPathPoint = path[i - 1];
-                tracker.AppendMotion(pathPoint.Acceleration, pathPoint.Time - previousPathPoint.Time);
+                tracker.AppendMotion(pathPoint.Acceleration, pathPoint.Time);
 
                 var trackedPoint = tracker.CurrentPosition.Position;
                 var deviation = Math.Abs((pathPoint.Position - trackedPoint).Length);
@@ -82,7 +81,7 @@ namespace BobOnRails.Controller.Physics.UnitTests
             {
                 var pathPoint = path[i];
                 var previousPathPoint = path[i - 1];
-                tracker.AppendMotion(pathPoint.Acceleration, pathPoint.Time - previousPathPoint.Time);
+                tracker.AppendMotion(pathPoint.Acceleration, pathPoint.Time);
 
                 var trackedPoint = tracker.CurrentPosition.Position;
                 var deviation = Math.Abs((pathPoint.Position - trackedPoint).Length);
