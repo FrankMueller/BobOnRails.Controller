@@ -1,5 +1,5 @@
 ﻿using System;
-using BobOnRails.Controller.Physics.Core.Integration;
+using BobOnRails.Controller.Physics.Integration;
 using NUnit.Framework;
 
 namespace BobOnRails.Controller.Physics.UnitTests.Integration

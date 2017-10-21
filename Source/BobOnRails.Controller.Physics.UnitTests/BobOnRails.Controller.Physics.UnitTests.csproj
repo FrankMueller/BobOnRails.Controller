@@ -42,9 +42,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BobOnRails.Controller.Physics.Core\BobOnRails.Controller.Physics.Core.csproj">
+    <ProjectReference Include="..\BobOnRails.Controller.Physics\BobOnRails.Controller.Physics.csproj">
       <Project>{b6505a3e-00f7-4fc2-b09a-1fc9a9874f21}</Project>
-      <Name>BobOnRails.Controller.Physics.Core</Name>
+      <Name>BobOnRails.Controller.Physics</Name>
     </ProjectReference>
     <ProjectReference Include="..\BobOnRails.Controller\BobOnRails.Controller.csproj">
       <Project>{1d67ab94-369a-4613-b7ad-3dac0a3bd5ff}</Project>

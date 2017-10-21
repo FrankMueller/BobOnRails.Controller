@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BobOnRails.Controller.Physics.Core.Integration
+namespace BobOnRails.Controller.Physics.Integration
 {
     /// <summary>
     /// A class providing methods to integrate a mathematical function using

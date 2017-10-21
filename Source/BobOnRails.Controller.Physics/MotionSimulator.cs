@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BobOnRails.Controller.Physics.Core
+namespace BobOnRails.Controller.Physics
 {
     /// <summary>
     /// A static class providing methods to compute generic acceleration measurements.

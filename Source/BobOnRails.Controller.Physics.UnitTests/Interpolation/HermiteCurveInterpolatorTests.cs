@@ -1,4 +1,4 @@
-﻿using BobOnRails.Controller.Physics.Core.Interpolation;
+﻿using BobOnRails.Controller.Physics.Interpolation;
 using NUnit.Framework;
 
 namespace BobOnRails.Controller.Physics.UnitTests.Interpolation

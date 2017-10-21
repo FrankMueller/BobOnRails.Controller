@@ -1,7 +1,7 @@
-﻿using BobOnRails.Controller.Physics.Core.Integration;
-using BobOnRails.Controller.Physics.Core.Interpolation;
+﻿using BobOnRails.Controller.Physics.Integration;
+using BobOnRails.Controller.Physics.Interpolation;
 
-namespace BobOnRails.Controller.Physics.Core
+namespace BobOnRails.Controller.Physics
 {
     /// <summary>
     /// A static class providing methods compute velocity and position changes from 

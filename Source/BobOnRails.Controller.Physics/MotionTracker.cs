@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using BobOnRails.Controller.Physics.Core.Integration;
-using BobOnRails.Controller.Physics.Core.Interpolation;
+using BobOnRails.Controller.Physics.Integration;
+using BobOnRails.Controller.Physics.Interpolation;
 
-namespace BobOnRails.Controller.Physics.Core
+namespace BobOnRails.Controller.Physics
 {
     /// <summary>
     /// A motion tracker which tracks the position of an object by integrating

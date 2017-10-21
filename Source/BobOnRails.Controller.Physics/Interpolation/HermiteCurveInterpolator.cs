@@ -1,4 +1,4 @@
-﻿namespace BobOnRails.Controller.Physics.Core.Interpolation
+﻿namespace BobOnRails.Controller.Physics.Interpolation
 {
     /// <summary>
     /// A class providing methods to smoothly interpolate a function y = f(x)

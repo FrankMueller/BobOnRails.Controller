@@ -7,8 +7,8 @@
     <ProjectGuid>{B6505A3E-00F7-4FC2-B09A-1FC9A9874F21}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BobOnRails.Controller.Physics.Core</RootNamespace>
-    <AssemblyName>BobOnRails.Controller.Physics.Core</AssemblyName>
+    <RootNamespace>BobOnRails.Controller.Physics</RootNamespace>
+    <AssemblyName>BobOnRails.Controller.Physics</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -20,7 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\BobOnRails.Controller.Physics.Core.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\BobOnRails.Controller.Physics.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>

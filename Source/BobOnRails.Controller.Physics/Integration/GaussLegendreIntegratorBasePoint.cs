@@ -1,4 +1,4 @@
-﻿namespace BobOnRails.Controller.Physics.Core.Integration
+﻿namespace BobOnRails.Controller.Physics.Integration
 {
     /// <summary>
     /// Represents a base point for the <see cref="GaussLegendreIntegrator"/>.
