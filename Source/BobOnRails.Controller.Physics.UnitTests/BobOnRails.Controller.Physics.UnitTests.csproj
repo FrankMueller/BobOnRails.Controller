@@ -37,6 +37,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Integration\GaussLegendreIntegratorTests.cs" />
+    <Compile Include="Interpolation\HermiteCurveInterpolatorTests.cs" />
     <Compile Include="MotionTrackerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
