@@ -1,0 +1,33 @@
+﻿<Window x:Class="BobOnRails.Controller.DeviceSimulator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:HelixToolkit="clr-namespace:HelixToolkit.Wpf;assembly=HelixToolkit.Wpf"
+        xmlns:local="clr-namespace:BobOnRails.Controller.DeviceSimulator"
+        mc:Ignorable="d"
+        Title="Device Simulator" Height="350" Width="525">
+    <Window.DataContext>
+        <local:VirtualDeviceViewModel/>
+    </Window.DataContext>
+    <DockPanel>
+        <ToolBarTray DockPanel.Dock="Bottom">
+            <ToolBar>
+                <Button Command="{Binding GeneratePathCommand}" Content="Generate path"  />
+                <Button Command="{Binding StartDeviceCommand}" Content="Start device"  />
+                <Button Command="{Binding StopDeviceCommand}" Content="Stop device"  />
+                <TextBox Text="{Binding DeviceIP}" />
+                <TextBox Text="{Binding DevicePort}" />
+            </ToolBar>
+        </ToolBarTray>
+        <HelixToolkit:HelixViewport3D ZoomExtentsWhenLoaded="True">
+
+            <HelixToolkit:SunLight/>
+
+            <ModelVisual3D Content="{Binding Model}"/>
+            <HelixToolkit:LinesVisual3D Points="{Binding PathLine}"/>
+
+        </HelixToolkit:HelixViewport3D>
+    </DockPanel>
+
+</Window>
