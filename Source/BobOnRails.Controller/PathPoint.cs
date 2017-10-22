@@ -36,6 +36,7 @@ namespace BobOnRails.Controller
         /// Initialize a new instance of the <see cref="PathPoint"/> class.
         /// </summary>
         public PathPoint()
+            : this(DateTime.MinValue, new PositionVector(), new VelocityVector(), new AccelerationVector(), new JerkVector())
         { }
 
         /// <summary>
@@ -46,10 +47,9 @@ namespace BobOnRails.Controller
         /// <param name="velocity">The velocity at this <see cref="PathPoint"/>.</param>
         /// <param name="acceleration">The acceleration at this <see cref="PathPoint"/>.</param>
         /// <param name="jerk">The jerk at this <see cref="PathPoint"/>.</param>
-        public PathPoint(DateTime timeStep, 
-            PositionVector position, VelocityVector velocity, 
+        public PathPoint(DateTime timeStep,
+            PositionVector position, VelocityVector velocity,
             AccelerationVector acceleration, JerkVector jerk)
-            : this()
         {
             Time = timeStep;
             Position = position;
