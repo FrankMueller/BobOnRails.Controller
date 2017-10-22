@@ -133,9 +133,9 @@ namespace BobOnRails.Controller.Physics
                 var periodFactor = 2.0 * Math.PI / periodTime;
                 var speedFactor = 0.5 * topSpeed;
 
-                var length = speedFactor * -Math.Cos(periodFactor * time) / periodFactor + time;
-                var speed = speedFactor * Math.Sin(periodFactor * time) + 1.0;
-                var acceleration = speedFactor * Math.Cos(periodFactor * time) * periodFactor;
+                var length = speedFactor * (-Math.Sin(periodFactor * time) / periodFactor + time);
+                var speed = speedFactor * (-Math.Cos(periodFactor * time) + 1.0);
+                var acceleration = speedFactor * Math.Sin(periodFactor * time) * periodFactor;
 
                 path.Add(new PathPoint(
                     startTime + TimeSpan.FromSeconds(time),
