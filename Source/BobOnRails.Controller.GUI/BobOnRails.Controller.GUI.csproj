@@ -102,9 +102,21 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BobOnRails.Controller.Physics.Core\BobOnRails.Controller.Physics.Core.csproj">
+    <ProjectReference Include="..\BobOnRails.Controller.Communication\BobOnRails.Controller.Communication.csproj">
+      <Project>{5511AB2A-FFB9-4D01-A28C-447F45C86E9D}</Project>
+      <Name>BobOnRails.Controller.Communication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BobOnRails.Controller.MVVM\BobOnRails.Controller.MVVM.csproj">
+      <Project>{05BC0219-AD83-45AA-9606-F0A99B5C9E3C}</Project>
+      <Name>BobOnRails.Controller.MVVM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BobOnRails.Controller.Physics\BobOnRails.Controller.Physics.csproj">
       <Project>{b6505a3e-00f7-4fc2-b09a-1fc9a9874f21}</Project>
-      <Name>BobOnRails.Controller.Physics.Core</Name>
+      <Name>BobOnRails.Controller.Physics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BobOnRails.Controller\BobOnRails.Controller.csproj">
+      <Project>{1d67ab94-369a-4613-b7ad-3dac0a3bd5ff}</Project>
+      <Name>BobOnRails.Controller</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

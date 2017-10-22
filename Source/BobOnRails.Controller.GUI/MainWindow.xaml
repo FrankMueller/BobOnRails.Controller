@@ -6,18 +6,27 @@
         xmlns:HelixToolkit="clr-namespace:HelixToolkit.Wpf;assembly=HelixToolkit.Wpf"
         xmlns:local="clr-namespace:BobOnRails.Controller.GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Device trace" Height="350" Width="525">
     <Window.DataContext>
         <local:MainViewModel/>
     </Window.DataContext>
-    <Grid>
-        <HelixToolkit:HelixViewport3D ZoomExtentsWhenLoaded="True" >
+    <DockPanel>
+        <ToolBarTray DockPanel.Dock="Top">
+            <ToolBar>
+                <Button Command="{Binding ConnectDeviceCommand}" Content="Connect"  />
+                <Button Command="{Binding StartMeasurementCommand}" Content="Start"  />
+                <Button Command="{Binding StopDeviceCommand}" Content="Stop"  />
+                <TextBox Text="{Binding DeviceIP}" />
+                <TextBox Text="{Binding DevicePort}" />
+            </ToolBar>
+        </ToolBarTray>
+        <HelixToolkit:HelixViewport3D ZoomExtentsWhenLoaded="True">
 
             <HelixToolkit:SunLight/>
 
             <ModelVisual3D Content="{Binding Model}"/>
-            <HelixToolkit:LinesVisual3D Points="{Binding Path}"/>
+            <HelixToolkit:LinesVisual3D Points="{Binding PathLine}"/>
 
         </HelixToolkit:HelixViewport3D>
-    </Grid>
+    </DockPanel>
 </Window>
