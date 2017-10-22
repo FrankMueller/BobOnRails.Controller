@@ -37,8 +37,8 @@ namespace BobOnRails.Controller.Communication
             var timeStamp = new DateTime(BitConverter.ToInt64(bytes, startIndex + 0));
             var vector = new AccelerationVector(
                 (double)BitConverter.ToSingle(bytes, startIndex + 8),
-                (double)BitConverter.ToSingle(bytes, startIndex + 10),
-                (double)BitConverter.ToSingle(bytes, startIndex + 12));
+                (double)BitConverter.ToSingle(bytes, startIndex + 12),
+                (double)BitConverter.ToSingle(bytes, startIndex + 16));
 
             return new AccelerometerMeasurement(timeStamp, vector);
         }
