@@ -99,7 +99,7 @@ namespace BobOnRails.Controller.Physics
             DateTime nextPointTimeStamp)
         {
             var currentPoint = Path.Last();
-            if (Path.Count > 1)
+            if (Path.Count > 2)
             {
                 var previousPoint = Path[Path.Count - 2];
 
