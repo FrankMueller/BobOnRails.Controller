@@ -45,7 +45,8 @@
     <Compile Include="AccelerometerMeasurement.cs" />
     <Compile Include="CommunicationHandler.cs" />
     <Compile Include="DataEncoder.cs" />
-    <Compile Include="ResponseReceivedEventArgs.cs" />
+    <Compile Include="IMessage.cs" />
+    <Compile Include="MessageReceivedEventArgs.cs" />
     <Compile Include="Request.cs" />
     <Compile Include="RequestTypes.cs" />
     <Compile Include="Response.cs" />

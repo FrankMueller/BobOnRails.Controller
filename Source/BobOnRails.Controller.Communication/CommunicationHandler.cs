@@ -12,20 +12,20 @@ namespace BobOnRails.Controller.Communication
     /// </summary>
     public class CommunicationHandler : IDisposable
     {
-        private Communicator communicator;
+        private Communicator<Response, Request> communicator;
         private SynchronizationContext syncronizationContext;
         private Queue<AccelerometerMeasurement> accelerometerMeasurementQueue;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CommunicationHandler"/> class.
         /// </summary>
-        public CommunicationHandler(IPEndPoint deviceEndPoint)
+        public CommunicationHandler(string hostname, int port)
         {
             syncronizationContext = SynchronizationContext.Current;
 
             accelerometerMeasurementQueue = new Queue<AccelerometerMeasurement>();
 
-            communicator = new Communicator(new TcpClient(deviceEndPoint));
+            communicator = new Communicator<Response, Request>(new TcpClient(hostname, port));
             communicator.DataReceived += OnDataReceived;
         }
 
@@ -40,7 +40,7 @@ namespace BobOnRails.Controller.Communication
         /// </summary>
         public void StartMeasuring()
         {
-            communicator.SendRequestAsync(new Request(RequestTypes.StartAccelerometerDataStream));
+            communicator.SendMessageAsync(new Request(RequestTypes.StartAccelerometerDataStream));
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace BobOnRails.Controller.Communication
         /// </summary>
         public void StopMeasuring()
         {
-            communicator.SendRequestAsync(new Request(RequestTypes.StopAccelerometerDataStream));
+            communicator.SendMessageAsync(new Request(RequestTypes.StopAccelerometerDataStream));
         }
 
         /// <summary>
@@ -68,11 +68,11 @@ namespace BobOnRails.Controller.Communication
             }
         }
 
-        private void OnDataReceived(object sender, ResponseReceivedEventArgs e)
+        private void OnDataReceived(object sender, MessageReceivedEventArgs<Response> e)
         {
             try
             {
-                HandleResponse(e.Response);
+                HandleResponse(e.Message);
             }
             catch ( Exception ex)
             {

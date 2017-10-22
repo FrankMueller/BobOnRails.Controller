@@ -10,12 +10,12 @@ namespace BobOnRails.Controller.Communication
         /// <summary>
         /// Gets the time stamp of the measurement.
         /// </summary>
-        public DateTime TimeStamp { get; private set; }
+        public DateTime TimeStamp { get; set; }
 
         /// <summary>
         /// Gets the acceleration vector.
         /// </summary>
-        public AccelerationVector Acceleration { get; private set; }
+        public AccelerationVector Acceleration { get; set; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AccelerometerMeasurement"/> class.
