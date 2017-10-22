@@ -37,12 +37,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommunicatorTest.cs" />
+    <Compile Include="DataEncoderTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BobOnRails.Controller.Communication\BobOnRails.Controller.Communication.csproj">
       <Project>{5511ab2a-ffb9-4d01-a28c-447f45c86e9d}</Project>
       <Name>BobOnRails.Controller.Communication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BobOnRails.Controller\BobOnRails.Controller.csproj">
+      <Project>{1d67ab94-369a-4613-b7ad-3dac0a3bd5ff}</Project>
+      <Name>BobOnRails.Controller</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
